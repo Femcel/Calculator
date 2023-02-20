@@ -1,3 +1,26 @@
-* {
-  color: red;
+.wrapper {
+  background-color: brown;
+  padding: 10px;
+  display: grid;
+  width: 30vw;
+  grid-template-columns: repeat(1fr, 2);
+  grid-auto-rows: 100px;
+  
+}
+#numbers {
+  background-color: blueviolet;
+  display: grid;
+  grid-template-rows: repeat(1fr, 4);
+  grid-template-columns: 1fr 1fr 1fr;
+
+}
+#Display {
+  background-color: antiquewhite;
+  grid-column-start: 1;
+  grid-column-end: 6;
+}
+
+#side {
+  grid-column-start: 5;
+  grid-column-end: 6;
 }
