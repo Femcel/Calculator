@@ -1,13 +1,22 @@
 const display = document.getElementById("Display");
+const clearBtn = document.getElementById("Clear");
 const numbersBtns = document.getElementsByClassName("number");
 
 let text = display.textContent;
 
 function TypeNumber(number) {
   text += number;
-  display.textContent = text;
+  Refresh();
 }
 
+function Clear() {
+  text = "";
+  Refresh();
+}
+
+function Refresh() {
+  display.textContent = text;
+}
 function Add(a, b) {
   let result = a + b;
   return result;
@@ -46,7 +55,6 @@ function Operate(operation, a, b) {
   }
 }
 
-console.log(numbersBtns);
 for(i = 0; i <= numbersBtns.length; i++) {
   if(numbersBtns[i]){
     numbersBtns[i].addEventListener("click", (event) => {
@@ -54,3 +62,5 @@ for(i = 0; i <= numbersBtns.length; i++) {
     });
   }
 }
+
+clearBtn.addEventListener("click", Clear);
