@@ -1,3 +1,13 @@
+const display = document.getElementById("Display");
+const numbersBtns = document.getElementsByClassName("number");
+
+let text = display.textContent;
+
+function TypeNumber(number) {
+  text += number;
+  display.textContent = text;
+}
+
 function Add(a, b) {
   let result = a + b;
   return result;
@@ -36,7 +46,11 @@ function Operate(operation, a, b) {
   }
 }
 
-console.log(Operate('add', 5, 3));
-console.log(Operate('subtract', 5, 3));
-console.log(Operate('multiply', 5, 3));
-console.log(Operate('divide', 5, 3));
+console.log(numbersBtns);
+for(i = 0; i <= numbersBtns.length; i++) {
+  if(numbersBtns[i]){
+    numbersBtns[i].addEventListener("click", (event) => {
+      TypeNumber(event.currentTarget.textContent);
+    });
+  }
+}
