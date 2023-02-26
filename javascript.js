@@ -1,25 +1,49 @@
+//#region constants 
 const display = document.getElementById("Display");
 const clearBtn = document.getElementById("Clear");
 const numbersBtns = document.getElementsByClassName("number");
+const equals = document.getElementById("eqBtn");
+const divide = document.getElementById("divide");
+const multiply = document.getElementById("multiply");
+const subtract = document.getElementById("subtract");
+const sum = document.getElementById("sum");
+//#endregion
 
-let text = display.textContent;
+//#region variables
+let a = "";
+let b = "";
+let operation = "";
+let number = "";
+//#endregion
 
-function TypeNumber(number) {
-  text += number;
+//#region Display Functions
+function TypeNumber(digit) {
+  number += digit;
   Refresh();
 }
 
 function Clear() {
-  text = "";
+  number = "";
   Refresh();
 }
 
-function Refresh() {
-  display.textContent = text;
+function Reset() {
+  a = "";
+  b = "";
+  number = "";
+  operation = "";
+  Refresh();
 }
+function Refresh() {
+  display.textContent = number;
+}
+//#endregion
+
+//#region operations
+
 function Add(a, b) {
   let result = a + b;
-  return result;
+  console.log("SOMA: " + result);
 } 
 
 function Subtract(a, b) {
@@ -35,10 +59,24 @@ function Divide(a, b) {
   let result = a / b;
   return result;
 } 
+//#endregion
 
-function Operate(operation, a, b) {
+function SetA () {
+  a = number;
+  Clear();
+}
+
+function SetB() {
+  b = number;
+  Clear();
+}
+
+function Operate() {
+  SetB();
+  a = parseInt(a);
+  b = parseInt(b);
   switch (operation) {
-    case 'add':
+    case 'sum':
       return Add(a, b);
 
     case 'subtract':
@@ -63,4 +101,9 @@ for(i = 0; i <= numbersBtns.length; i++) {
   }
 }
 
-clearBtn.addEventListener("click", Clear);
+clearBtn.addEventListener("click", Reset);
+sum.addEventListener("click", () => {
+  SetA();
+  Clear();
+  operation = "sum";});
+equals.addEventListener("click", Operate);
