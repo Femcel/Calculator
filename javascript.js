@@ -43,21 +43,25 @@ function Refresh() {
 
 function Add(a, b) {
   let result = a + b;
-  console.log("SOMA: " + result);
+  number = result;
+  Refresh();
 } 
 
 function Subtract(a, b) {
   let result = a - b;
-  return result;
+  number = result;
+  Refresh();
 } 
 
 function Multiply(a, b) {
   let result = a * b;
-  return result;
+  number = result;
+  Refresh();
 } 
 function Divide(a, b) {
   let result = a / b;
-  return result;
+  number = result;
+  Refresh();
 } 
 //#endregion
 
@@ -91,6 +95,7 @@ function Operate() {
     default:
       return console.log("Invalid Operation")
   }
+
 }
 
 for(i = 0; i <= numbersBtns.length; i++) {
@@ -106,4 +111,17 @@ sum.addEventListener("click", () => {
   SetA();
   Clear();
   operation = "sum";});
+subtract.addEventListener("click", () => {
+  SetA();
+  Clear();
+  operation = "subtract";});
+multiply.addEventListener("click", () => {
+  SetA();
+  Clear();
+  operation = "multiply";});
+divide.addEventListener("click", () => {
+  SetA();
+  Clear();
+  operation = "divide";});
+
 equals.addEventListener("click", Operate);
